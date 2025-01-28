@@ -37,7 +37,7 @@ Now we proceed with sequence comparison using BWA, followed by format conversion
 
 ```bash
 #1 Sequence comparison
-time /Tools/common/bin/bwa mem -t 4 -R '@RG\tID:foo\tPL:illumina\tSM:BreastCancer' /Project/wgs_practice/input/E.coli/fasta/BreastCancerGenome.fa /Project/wgs_practice/input/E.coli/fastq/BreastCancerGenome.fastq.gz /Project/wgs_practice/input/BreastCancerGenome.fastq.gz | /Tools/common/bin/samtools view -Sb - > /Project/wgs_practice/output/BreastCancerGenome.bam && echo "** bwa mapping done **"
+time /Tools/common/bin/bwa mem -t 4 -R '@RG\tID:foo\tPL:illumina\tSM:BreastCancer' /Project/wgs_practice/input/fasta/BreastCancerGenome.fa /Project/wgs_practice/input/fastq/BreastCancerGenome.fastq.gz /Project/wgs_practice/input/BreastCancerGenome.fastq.gz | /Tools/common/bin/samtools view -Sb - > /Project/wgs_practice/output/BreastCancerGenome.bam && echo "** bwa mapping done **"
 
 #2 Sorting
 time /Tools/common/bin/samtools sort -@ 4 -m 4G -O bam -o /Project/wgs_practice/output/BreastCancerGenome.sorted.bam /Project/wgs_practice/output/BreastCancerGenome.bam && echo "** BAM sort done"
@@ -45,7 +45,7 @@ time /Tools/common/bin/samtools sort -@ 4 -m 4G -O bam -o /Project/wgs_practice/
 rm -f /Project/wgs_practice/output/BreastCancerGenome.bam
 
 #3 Marking PCR duplicates
-time /Tools/common/bin/gatk/4.0.1.2/gatk MarkDuplicates -I /Project/wgs_practice/output/BreastCancerGenome.sorted.bam -O /Project/wgs_practice/output/BreastCancerGenome.sorted.markdup.bam -M /Project/wgs_practice/output/E.coli/BreastCancerGenome.markdup_metrics.txt && echo "** markdup done **"
+time /Tools/common/bin/gatk/4.0.1.2/gatk MarkDuplicates -I /Project/wgs_practice/output/BreastCancerGenome.sorted.bam -O /Project/wgs_practice/output/BreastCancerGenome.sorted.markdup.bam -M /Project/wgs_practice/output/BreastCancerGenome.markdup_metrics.txt && echo "** markdup done **"
 
 #4 Deleting unnecessary files (optional)
 rm -f /Project/wgs_practice/output/BreastCancerGenome.bam
