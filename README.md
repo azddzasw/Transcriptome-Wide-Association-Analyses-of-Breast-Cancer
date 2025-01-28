@@ -1,4 +1,8 @@
 # Transcriptome-Wide-Association-Analyses-of-Breast-Cancer
+### Dataset
+
+Breast cancer Transcriptome data: https://www.ebi.ac.uk/ena/browser/view/PRJNA292118
+Human refenerce gene data: https://www.ncbi.nlm.nih.gov/grc
 
 ### Project Directory Structure
 
